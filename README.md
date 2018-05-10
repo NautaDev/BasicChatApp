@@ -10,6 +10,7 @@ It uses Parser for the online features (basically, the chat). Since parse.com is
 # Changelog
 This will be a really simple changelog, just to see what I have done and what I am going to do:
 
+* 2018/05/10 - Added glide dependency and updated logging-interceptor dependency to the last available version (3.10.0)
 * 2018/05/10 - Added a Message subclass to make our life easier and use it on the Recycler View. Also implemented some changes in the send message button to use this new class. And of course, created a new layout, the item_chat layout, later it will be used to display the messages.
 * 2018/05/10 - Added dependency to use RecyclerView.
 * 2018/05/10 - Coded basic UI (send button now works) and it saves the message on the server
