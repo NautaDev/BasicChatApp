@@ -2,6 +2,8 @@ package com.oncodemy.basicchatapp;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -15,6 +17,8 @@ import com.parse.ParseObject;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
+import java.util.ArrayList;
+
 public class ChatActivity extends AppCompatActivity {
 
     // You know, this is used for logging purposes!
@@ -26,6 +30,14 @@ public class ChatActivity extends AppCompatActivity {
     // UI vars:
     EditText etxt_Message;
     Button btn_Send;
+    RecyclerView rView_Messages;
+
+    // RecyclerView vars:
+    ArrayList<Message> rvMessages;
+    ChatAdapter rvAdapter;
+
+    // Keep track of initial load to scroll to the bottom of the ListView
+    boolean aFirstLoad;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +63,20 @@ public class ChatActivity extends AppCompatActivity {
         // Assign the UI vars
         etxt_Message = (EditText) findViewById(R.id.aC_etxt_Message);
         btn_Send = (Button) findViewById(R.id.aC_btn_Send);
+        rView_Messages = (RecyclerView) findViewById(R.id.aC_rView_Messages);
+
+        // Set up the vars used by the recycler view
+        rvMessages = new ArrayList<>();
+        final String userId = ParseUser.getCurrentUser().getObjectId();
+        rvAdapter = new ChatAdapter(ChatActivity.this, userId, rvMessages);
+        rView_Messages.setAdapter(rvAdapter);
+
+        // And the vars used by the activity
+        aFirstLoad = true;
+
+        // We have to associate the LayoutManager with the RecyclerView
+        final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(ChatActivity.this);
+        rView_Messages.setLayoutManager(linearLayoutManager);
 
         // Now let's configure what happens when the send button is clicked
         btn_Send.setOnClickListener(new View.OnClickListener() {
@@ -73,6 +99,7 @@ public class ChatActivity extends AppCompatActivity {
                         if(e == null) {
                             Toast.makeText(ChatActivity.this, getString(R.string.toast_saved_message_ok),
                                     Toast.LENGTH_SHORT).show();
+                            refreshMessages();
                         } else {
                             Log.e(TAG, getString(R.string.toast_saved_message_err), e);
                         }
@@ -83,6 +110,11 @@ public class ChatActivity extends AppCompatActivity {
                 etxt_Message.setText(null);
             }
         });
+    }
+
+    // Function:
+    void refreshMessages(){
+        // TODO
     }
 
     // Function: Easy, create an anonymous user using ParseAnonymousUtils and set sUserId
