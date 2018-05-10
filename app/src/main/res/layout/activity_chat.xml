@@ -5,23 +5,45 @@
     android:layout_height="match_parent"
     tools:context=".ChatActivity">
 
-    <EditText
-        android:id="@+id/aC_etxt_Message"
-        android:layout_toLeftOf="@+id/aC_btn_Send"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/aC_btn_Send"
-        android:gravity="top"
-        android:hint="@string/aC_message_hint"
-        android:imeOptions="actionSend"/>
-    <Button
-        android:id="@+id/aC_btn_Send"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:paddingRight="10dp"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/aC_rView_Messages"
+        android:transcriptMode="alwaysScroll"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:text="@string/aC_btn_send"
-        android:textSize="18sp" />
+        android:layout_above="@+id/aC_rLayout_Send"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent" />
+
+    <RelativeLayout
+        android:id="@+id/aC_rLayout_Send"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:paddingTop="5dp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="0dp"
+        android:paddingRight="0dp"
+        android:layout_height="wrap_content" >
+
+        <EditText
+            android:id="@+id/aC_etxt_Message"
+            android:layout_toLeftOf="@+id/aC_btn_Send"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/aC_btn_Send"
+            android:gravity="top"
+            android:hint="@string/aC_message_hint"
+            android:imeOptions="actionSend"/>
+        <Button
+            android:id="@+id/aC_btn_Send"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingRight="10dp"
+            android:layout_alignParentRight="true"
+            android:text="@string/aC_btn_send"
+            android:textSize="18sp" />
+
+    </RelativeLayout>
 
 </RelativeLayout>

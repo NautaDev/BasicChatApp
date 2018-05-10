@@ -58,12 +58,13 @@ public class ChatActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // First we get the message (it is in the message edit text)
                 String data = etxt_Message.getText().toString();
-                // We create a ParseObject called Message
-                ParseObject message = ParseObject.create("Message");
-                // And add the user id
-                message.put(USER_ID_KEY, ParseUser.getCurrentUser().getObjectId());
-                // And the message on it
-                message.put(BODY_KEY, data);
+
+                // We will use the Message subclass we created
+                Message message=new Message();
+                // We assign the message the user has written
+                message.setBody(data);
+                // And we assign the user id we are using (right now it is an anonymous one, later maybe it will be a registered user)
+                message.setUserId(ParseUser.getCurrentUser().getObjectId());
 
                 // Now we save the message (sending it to server if it is possible!)
                 message.saveInBackground(new SaveCallback() {

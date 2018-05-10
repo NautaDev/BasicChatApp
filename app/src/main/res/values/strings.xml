@@ -1,9 +1,13 @@
 <resources>
     <string name="app_name">Basic Chat App</string>
 
-    <!-- String for activity ChatActivity -->
+    <!-- Strings for activity ChatActivity -->
     <string name="aC_message_hint">Type a message...</string>
     <string name="aC_btn_send">Send</string>
+
+    <!-- Strings for layout ItemChat -->
+    <string name="iC_profile_me">My Profile Pic</string>
+    <string name="iC_profile_other">Other profile pic</string>
 
     <!-- String for our Toasts -->
     <string name="toast_saved_message_ok">Successfully created message on Parse</string>
