@@ -31,7 +31,6 @@ public class ChatActivity extends AppCompatActivity {
     static final int MAX_CHAT_MESSAGES_TO_SHOW = 50;
 
     static final String USER_ID_KEY = "userId";
-    static final String BODY_KEY = "body";
 
     // UI vars:
     EditText etxt_Message;
@@ -190,7 +189,7 @@ public class ChatActivity extends AppCompatActivity {
             @Override
             public void done(ParseUser user, ParseException e) {
                 if (e != null) {
-                    Log.e(TAG, "Anonymous login failed: ", e);
+                    Log.e(TAG, getString(R.string.toast_anonymous_login_err), e);
                 } else {
                     startWithCurrentUser();
                 }

@@ -13,13 +13,13 @@
     <string name="toast_saved_message_ok">Successfully created message on Parse</string>
     <string name="toast_saved_message_err">Failed to save message</string>
     <string name="toast_load_messages_err">Error loading messages</string>
+    <string name="toast_anonymous_login_err">Anonymous login failed: </string>
 
     <!-- Strings for the Parse api -->
     <string name="back4app_server_url">https://parseapi.back4app.com/</string>
     <!-- Change those strings with the correct strings for your back4apps project -->
     <string name="back4app_app_id">SFGBhlpxBHaRxxmh78ZXkcBCcwPWDZrKAWqtzLwX</string>
     <string name="back4app_client_key">mwx3R5U3KMH7x6PthG3OTIPFflRMpaBAtcdGY6kZ</string>
-    <string name="back4app_live_query_url">wss://testchatapp.back4app.io</string>
 
 
     <string name="title_activity_message_board">MessageBoardActivity</string>
