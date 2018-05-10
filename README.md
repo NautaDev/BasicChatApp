@@ -10,10 +10,10 @@ It uses Parser for the online features (basically, the chat). Since parse.com is
 ## ToDo List
 
 * **DONE** ~~Do a basic functional version, just one screen that allows to send and automatically receive messages between users.~~
-* Improve the UI design
-* Add a registration and login system
-* Add multiple individual chats
-* Add group chats
+* Improve the UI design.
+* Add a registration and login system.
+* Add multiple individual chats.
+* Add group chats.
 
 ## Changelog
 This will be a really simple changelog, just to see what I have done and when:
