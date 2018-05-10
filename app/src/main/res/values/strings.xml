@@ -2,7 +2,7 @@
     <string name="app_name">Basic Chat App</string>
 
     <!-- Strings for activity ChatActivity -->
-    <string name="aC_message_hint">Type a message...</string>
+    <string name="aC_message_hint">Type a message…</string>
     <string name="aC_btn_send">Send</string>
 
     <!-- Strings for layout ItemChat -->
@@ -19,5 +19,8 @@
     <!-- Change those strings with the correct strings for your back4apps project -->
     <string name="back4app_app_id">SFGBhlpxBHaRxxmh78ZXkcBCcwPWDZrKAWqtzLwX</string>
     <string name="back4app_client_key">mwx3R5U3KMH7x6PthG3OTIPFflRMpaBAtcdGY6kZ</string>
+    <string name="back4app_live_query_url">wss://testchatapp.back4app.io</string>
+
+
     <string name="title_activity_message_board">MessageBoardActivity</string>
 </resources>

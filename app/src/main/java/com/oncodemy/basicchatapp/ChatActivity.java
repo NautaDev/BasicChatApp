@@ -14,10 +14,11 @@ import com.parse.FindCallback;
 import com.parse.LogInCallback;
 import com.parse.ParseAnonymousUtils;
 import com.parse.ParseException;
-import com.parse.ParseObject;
+import com.parse.ParseLiveQueryClient;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
+import com.parse.SubscriptionHandling;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,6 +50,36 @@ public class ChatActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
 
+        // Make sure the Parse server is setup to configured for live queries
+        // URL for server is determined by Parse.initialize() call.
+        ParseLiveQueryClient parseLiveQueryClient = ParseLiveQueryClient.Factory.getClient();
+
+        ParseQuery<Message> parseQuery = ParseQuery.getQuery(Message.class);
+        // This query can even be more granular (i.e. only refresh if the entry was added by some other user)
+        parseQuery.whereNotEqualTo(USER_ID_KEY, ParseUser.getCurrentUser().getObjectId());
+
+        // Connect to Parse server
+        SubscriptionHandling<Message> subscriptionHandling = parseLiveQueryClient.subscribe(parseQuery);
+
+        // Listen for CREATE events
+        subscriptionHandling.handleEvent(SubscriptionHandling.Event.CREATE, new
+                SubscriptionHandling.HandleEventCallback<Message>() {
+                    @Override
+                    public void onEvent(ParseQuery<Message> query, Message object) {
+                        rvMessages.add(0, object);
+
+                        // RecyclerView updates need to be run on the UI thread
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                rvAdapter.notifyDataSetChanged();
+                                rView_Messages.scrollToPosition(0);
+                            }
+                        });
+                    }
+                });
+
+
         // For now we will use the anonymous login, maybe later I update the app to use
         // accounts, but right now this is a basic and simple app
         if (ParseUser.getCurrentUser() != null) { // If we have already an user
@@ -57,6 +88,7 @@ public class ChatActivity extends AppCompatActivity {
             login();
         }
 
+        refreshMessages(); // A quick workaround to have messages displayed when the activity is opened
 
     }
 
