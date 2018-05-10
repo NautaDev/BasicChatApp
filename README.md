@@ -10,6 +10,7 @@ It uses Parser for the online features (basically, the chat). Since parse.com is
 # Changelog
 This will be a really simple changelog, just to see what I have done and what I am going to do:
 
+* 2018/05/10 - Added automatically updates of the messages in the chat. Also cleaned some dependencies and added some space between messages.
 * 2018/05/10 - Added a function to load the last 50 messages sent. Also it sorts them from older to newer without doing a linear sort.
 * 2018/05/10 - Added a custom adapter for the chat recycler view and also updated the ChatActivity to support the RecyclerView.
 * 2018/05/10 - Added glide dependency and updated logging-interceptor dependency to the last available version (3.10.0).
