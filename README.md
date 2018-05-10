@@ -7,23 +7,32 @@ This is a basic chat app I created for two reasons:
 
 It uses Parser for the online features (basically, the chat). Since parse.com is not available anymore, I have found another site that allows you to use Parser systems for free, it is called back4app. So, this is what I will use in this app.
 
-# Changelog
-This will be a really simple changelog, just to see what I have done and what I am going to do:
+## ToDo List
 
-* 2018/05/10 - Added automatically updates of the messages in the chat. Also cleaned some dependencies and added some space between messages.
-* 2018/05/10 - Added a function to load the last 50 messages sent. Also it sorts them from older to newer without doing a linear sort.
-* 2018/05/10 - Added a custom adapter for the chat recycler view and also updated the ChatActivity to support the RecyclerView.
-* 2018/05/10 - Added glide dependency and updated logging-interceptor dependency to the last available version (3.10.0).
-* 2018/05/10 - Added a Message subclass to make our life easier and use it on the Recycler View. Also implemented some changes in the send message button to use this new class. And of course, created a new layout, the item_chat layout, later it will be used to display the messages.
-* 2018/05/10 - Added dependency to use RecyclerView.
-* 2018/05/10 - Coded basic UI (send button now works) and it saves the message on the server.
-* 2018/05/10 - Changed again the activity, finally added a basic UI to send messages.
-* 2018/05/10 - Changed the structure a bit, mostly adding an Application class to initialize Parse.
-* 2018/05/10 - Replaced old MainActivity with a new one. For now this will be a simple design, after app is fully functional, I will implement a better UI.
-* 2018/05/10 - Added Parse SDK (from back4apps site) and configured it.
-* 2018/05/10 - Initial commit, it is just a fresh new Android Studio project, without nothing special.
+* **DONE** ~~Do a basic functional version, just one screen that allows to send and automatically receive messages between users.~~
+* Improve the UI design
+* Add a registration and login system
+* Add multiple individual chats
+* Add group chats
 
-# Sources
+## Changelog
+This will be a really simple changelog, just to see what I have done and when:
+
+* **2018/05/10** - Removed unused vars, changed some hardcoded strings to R.strings.
+* **2018/05/10** - Added automatically updates of the messages in the chat. Also cleaned some dependencies and added some space between messages.
+* **2018/05/10** - Added a function to load the last 50 messages sent. Also it sorts them from older to newer without doing a linear sort.
+* **2018/05/10** - Added a custom adapter for the chat recycler view and also updated the ChatActivity to support the RecyclerView.
+* **2018/05/10**- Added glide dependency and updated logging-interceptor dependency to the last available version (3.10.0).
+* **2018/05/10** - Added a Message subclass to make our life easier and use it on the Recycler View. Also implemented some changes in the send message button to use this new class. And of course, created a new layout, the item_chat layout, later it will be used to display the messages.
+* **2018/05/10** - Added dependency to use RecyclerView.
+* **2018/05/10** - Coded basic UI (send button now works) and it saves the message on the server.
+* **2018/05/10** - Changed again the activity, finally added a basic UI to send messages.
+* **2018/05/10** - Changed the structure a bit, mostly adding an Application class to initialize Parse.
+* **2018/05/10** - Replaced old MainActivity with a new one. For now this will be a simple design, after app is fully functional, I will implement a better UI.
+* **2018/05/10** - Added Parse SDK (from back4apps site) and configured it.
+* **2018/05/10** - Initial commit, it is just a fresh new Android Studio project, without nothing special.
+
+## Sources
 To learn how to do this app using Parser I have used several websites and documents so... to give credit to their authors and also to help anyone interested to learn about it, I will talk about them here:
 
 * Building Simple Chat Client with Parse: This guide done by Roger Hu was my starting point, mostly all my original code is from that guide, I just tried to comment it a little bit more and maybe change few things. You can read the guide here: https://github.com/codepath/android_guides/wiki/Building-Simple-Chat-Client-with-Parse
