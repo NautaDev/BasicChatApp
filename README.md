@@ -10,5 +10,5 @@ It uses Parser for the online features (basically, the chat). Since parse.com is
 # Changelog
 This will be a really simple changelog, just to see what I have done and what I am going to do:
 
-> 2018/05/10 - Added Parse SDK (from back4apps site) and configured it
-> 2018/05/10 - Initial commit, it is just a fresh new Android Studio project, without nothing special
+* 2018/05/10 - Added Parse SDK (from back4apps site) and configured it
+* 2018/05/10 - Initial commit, it is just a fresh new Android Studio project, without nothing special
