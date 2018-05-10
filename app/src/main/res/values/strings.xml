@@ -12,6 +12,7 @@
     <!-- String for our Toasts -->
     <string name="toast_saved_message_ok">Successfully created message on Parse</string>
     <string name="toast_saved_message_err">Failed to save message</string>
+    <string name="toast_load_messages_err">Error loading messages</string>
 
     <!-- Strings for the Parse api -->
     <string name="back4app_server_url">https://parseapi.back4app.com/</string>

@@ -10,19 +10,24 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.parse.FindCallback;
 import com.parse.LogInCallback;
 import com.parse.ParseAnonymousUtils;
 import com.parse.ParseException;
 import com.parse.ParseObject;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ChatActivity extends AppCompatActivity {
 
     // You know, this is used for logging purposes!
     static final String TAG = ChatActivity.class.getSimpleName();
+    // This is the max number of messages to show
+    static final int MAX_CHAT_MESSAGES_TO_SHOW = 50;
 
     static final String USER_ID_KEY = "userId";
     static final String BODY_KEY = "body";
@@ -51,6 +56,8 @@ public class ChatActivity extends AppCompatActivity {
         } else { // If not logged in, login as a new anonymous user
             login();
         }
+
+
     }
 
     // Function: Get the userId from the cached currentUser object
@@ -77,6 +84,7 @@ public class ChatActivity extends AppCompatActivity {
         // We have to associate the LayoutManager with the RecyclerView
         final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(ChatActivity.this);
         rView_Messages.setLayoutManager(linearLayoutManager);
+        linearLayoutManager.setReverseLayout(true); // This is a quick fix done to order messages from older to newer without doing a linear sort
 
         // Now let's configure what happens when the send button is clicked
         btn_Send.setOnClickListener(new View.OnClickListener() {
@@ -112,9 +120,36 @@ public class ChatActivity extends AppCompatActivity {
         });
     }
 
-    // Function:
+    // Function: Load the last 50 messages
     void refreshMessages(){
-        // TODO
+        // Construct query to execute
+        ParseQuery<Message> query = ParseQuery.getQuery(Message.class);
+        // Configure limit and sort order
+        query.setLimit(MAX_CHAT_MESSAGES_TO_SHOW);
+
+        // Get the latest 50 messages, order will show up newest to oldest of this group
+        query.orderByDescending("createdAt");
+        // Execute query to fetch all messages from Parse asynchronously
+        // This is equivalent to a SELECT query with SQL
+        query.findInBackground(new FindCallback<Message>() {
+            public void done(List<Message> messages, ParseException e) {
+                if (e == null) {
+                    // If there is no error, clear the Recycler View
+                    rvMessages.clear();
+                    // And add all the messages, updating the recycler view
+                    rvMessages.addAll(messages);
+                    rvAdapter.notifyDataSetChanged();
+                    // Scroll to the bottom of the list on initial load
+                    if (aFirstLoad) {
+                        rView_Messages.scrollToPosition(0);
+                        aFirstLoad = false;
+                    }
+                } else {
+                    Log.e("message", getString(R.string.toast_load_messages_err) + e);
+                    Toast.makeText(getApplicationContext(),getString(R.string.toast_load_messages_err),Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
     // Function: Easy, create an anonymous user using ParseAnonymousUtils and set sUserId
