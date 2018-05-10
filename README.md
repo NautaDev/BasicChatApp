@@ -1,4 +1,4 @@
-# BasicChatApp
+# Basic Chat App
 Basic Chat App created using Android Studio 3.0.1 and Parser (back4app)
 
 This is a basic chat app I created for two reasons:
