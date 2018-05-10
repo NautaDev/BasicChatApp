@@ -28,10 +28,7 @@
             android:value="@string/back4app_client_key" />
         <!-- End of metadata -->
 
-        <activity
-            android:name=".MessageBoardActivity"
-            android:label="@string/title_activity_message_board"
-            android:theme="@style/AppTheme.NoActionBar">
+        <activity android:name=".ChatActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
