@@ -6,4 +6,5 @@
     <!-- Change those strings with the correct strings for your back4apps project -->
     <string name="back4app_app_id">SFGBhlpxBHaRxxmh78ZXkcBCcwPWDZrKAWqtzLwX</string>
     <string name="back4app_client_key">mwx3R5U3KMH7x6PthG3OTIPFflRMpaBAtcdGY6kZ</string>
+    <string name="title_activity_message_board">MessageBoardActivity</string>
 </resources>
